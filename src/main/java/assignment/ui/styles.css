@@ -1,0 +1,172 @@
+.root {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-font-style: normal;
+    -fx-text-fill: rgb(255,255,255);
+}
+
+.element-containers, .button, .text-field {
+	-fx-background-color: transparent;
+	-fx-text-fill: rgb(255,255,255);
+	-fx-border-color: rgb(255,255,255);
+	-fx-border-width: 2px;
+	-fx-border-radius: 10px;
+}
+
+.label {
+	-fx-text-fill: rgb(255,255,255);
+}
+
+.radio-button {
+	-fx-text-fill: white;
+}
+
+.radio-button:selected .radio .dot {
+	-fx-background-color: #9D00FF;
+	-fx-background-insets: 0;
+}
+
+.button:hover {
+	-fx-text-fill: rgba(255,255,255,0.5);
+	-fx-border-color: rgba(255,255,255,0.5);	
+}
+
+.combo-box .list-cell 
+{
+    -fx-background: black;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-padding: 3 0 2 7;
+    -fx-cell-size: 1.66667em; 
+}
+
+.combo-box-popup .list-view 
+{
+    -fx-background-color: black, black;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+}    
+
+.combo-box-popup .list-view .list-cell 
+{
+    -fx-padding: 4 0 4 5;
+
+    /* No alternate highlighting */
+    -fx-background-color: black;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover 
+{
+    -fx-background: black;
+    -fx-background-color: purple;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover 
+{
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.combo-box-base  
+{
+    -fx-background-color: black, black, black, black;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+.combo-box-base:hover
+{
+    -fx-color: black;
+}
+
+.combo-box-base:showing 
+{
+    -fx-color: black;
+}
+
+.combo-box-base:focused {
+    -fx-background-color: black, black, black, black;
+    -fx-background-radius: 6.4, 4, 5, 3;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
+
+.combo-box-base:disabled {
+    -fx-opacity: .4;
+}
+
+.scroll-bar:vertical *.increment-button,
+.scroll-bar:vertical *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+    
+.scroll-bar:vertical *.increment-arrow,
+.scroll-bar:vertical *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+    
+.scroll-bar:horizontal *.increment-button,
+.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+    
+.scroll-bar:horizontal *.increment-arrow,
+.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+
+.table-header {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+
+.table-data {
+    -fx-font-size: 14px;
+    -fx-font-weight: 400;
+    -fx-text-fill: white;
+}
+
+.screen-header {
+    -fx-font-size: 24px;
+    -fx-font-weight: Bold;
+    -fx-text-fill: white;
+}
+
+.error-header {
+    -fx-text-fill: red;
+}
+
+.error-info {
+    -fx-text-fill: rgb(230,180,0);
+}
+
+.error-details {
+    -fx-font-size: 12px;
+    -fx-font-weight: 200;
+}
+
+.details-path {
+    -fx-font-size: 12px;
+    -fx-font-weight: 200;
+    -fx-font-style: italic;
+}
+
+.success {
+    -fx-text-fill: green;
+}

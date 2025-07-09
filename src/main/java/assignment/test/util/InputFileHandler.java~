@@ -1,0 +1,170 @@
+package assignment.test.util;
+
+import assignment.data.PlanetaryBodyData;
+import assignment.data.TransportationVehicleData;
+import assignment.factories.PlanetFactory;
+import assignment.factories.TransportationVehicleFactory;
+import assignment.planetai.PlanetaryBody;
+import assignment.Main;
+import assignment.test.TestApplicationProperties;
+import assignment.transportation.TransportationVehicle;
+import edu.ccri.assignment.files.poi.AbstractPoiTestDataSource;
+import edu.ccri.assignment.files.poi.PoiElementData;
+import edu.ccri.assignment.files.poi.PoiReadElementDataList;
+import edu.ccri.assignment.planets.data.DataAccessElement;
+import edu.ccri.assignment.planets.data.DataAccessOperations;
+import edu.ccri.assignment.planets.data.FileDataSource;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.swing.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * This class is intended to manage the input obtained from an Excel file.
+ */
+public class InputFileHandler extends AbstractPoiTestDataSource implements FileDataSource, DataAccessOperations {
+    /**
+     * The path to the Excel file
+     */
+    private static final String path = TestApplicationProperties.APP_RESOURCES_PATH + TestApplicationProperties.INPUT_FILE_NAME;
+    /**
+     * A logger for testing static methods
+     */
+    private static final Logger logger = LogManager.getLogger(InputFileHandler.class.getName());
+    /**
+     * The worksheet number initialized to -1 that will be pre-incremented for each new worksheet to read
+     */
+    private static int worksheetNumber = -1;
+
+    /**
+     * This class is intended to manage the input obtained from an Excel file.
+     */
+    public InputFileHandler() {
+        // DO NOTHING
+    }
+
+    /**
+     * Returns the path to the Excel file
+     * @return the path to the Excel file
+     */
+    public String getFileName() {
+        return path;
+    }
+
+    /**
+     * Reads the data from the Excel file
+     */
+    public void readFileDetails() {
+        try {
+            File inputFile = new File(path);
+            // Check if the file exists; if it does ...
+            if (inputFile.exists()) {
+                // READ AND STORE PLANETARY DATA FROM FILE
+                PoiReadElementDataList reader = new PoiReadElementDataList(path, 0);
+                ArrayList<ArrayList<PoiElementData>> dataList = reader.getDataList();
+                for (ArrayList<PoiElementData> row : dataList.subList(1, dataList.size())) {
+                    handlePoiDataRowResults(row);
+                }
+
+                // READ AND STORE VEHICLE DATA FROM FILE
+                reader = new PoiReadElementDataList(path, 1);
+                dataList = reader.getDataList();
+                for (ArrayList<PoiElementData> row : dataList.subList(1, dataList.size())) {
+                    handlePoiDataRowResults(row);
+                }
+
+                // SORT LISTS OF PLANETARY DATA AND VEHICLE DATA BY NAME (ALPHABETICALLY)
+                PlanetaryBodyData.sortPlanets();
+                TransportationVehicleData.sortVehicles();
+            }
+            // If the file does not exist, display and log a message; then halt the program
+            else {
+                Main.halt();
+                JOptionPane.showMessageDialog(null, "Error: Input file not found.\n Check Directory: " + path, "Error", JOptionPane.ERROR_MESSAGE);
+                throw new FileNotFoundException("File not found: " + path);
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+            logger.error(ExceptionUtils.getStackTrace(e));
+        }
+    }
+
+    /**
+     * Returns the worksheet number initialized to -1 that will be pre-incremented for each new worksheet to read
+     * @return the worksheet number for each new worksheet to read
+     */
+    protected int getWorksheetNumber() {
+        return ++worksheetNumber;
+    }
+
+    /**
+     * Handles the results of the data row read from the Excel file
+     * @param rowDataList the data row read from the Excel file
+     */
+    @Override
+    protected void handlePoiDataRowResults(ArrayList<PoiElementData> rowDataList) {
+        // if column 2 contains 'Planet' or 'Dwarf planet' or 'Moon', then create a new PlanetaryBody object
+        if (handlePoiDataValueToString(rowDataList, 2).equalsIgnoreCase("Planet") || handlePoiDataValueToString(rowDataList, 2).equalsIgnoreCase("Dwarf planet") || handlePoiDataValueToString(rowDataList, 2).equalsIgnoreCase("Moon")){
+            PlanetaryBody newPlanet = PlanetFactory.create(handlePoiDataValueToString(rowDataList, 2));
+
+            newPlanet.setPlanetaryName(handlePoiDataValueToString(rowDataList, 1));
+            newPlanet.setClassification(handlePoiDataValueToString(rowDataList, 2));
+            newPlanet.setDiameter(handlePoiDataValueToDouble(rowDataList, 4));
+            newPlanet.setWeight(handlePoiDataValueToDouble(rowDataList, 19));
+            newPlanet.setDistanceFromEarth(handlePoiDataValueToDouble(rowDataList, 20));
+            newPlanet.setDistanceFromSun(handlePoiDataValueToDouble(rowDataList, 21));
+            newPlanet.setOrbitalEcc(handlePoiDataValueToDouble(rowDataList, 17));
+            newPlanet.setAlbedo(handlePoiDataValueToDouble(rowDataList, 18));
+            newPlanet.setDayLength(handlePoiDataValueToDouble(rowDataList, 5));
+            newPlanet.setYearLength(handlePoiDataValueToDouble(rowDataList, 6));
+            newPlanet.setDragCoefficient();
+            newPlanet.setOrbitalVelocity();
+
+            // Append a new PlanetaryBody object to the PLANETS list using the values from file
+            PlanetaryBodyData.addPlanet(newPlanet);
+        }
+        // if column 2 does not contain 'Planet' or 'Dwarf planet' or 'Moon', then create a new TransportationVehicle object
+        else {
+            TransportationVehicle newVehicle = TransportationVehicleFactory.create(handlePoiDataValueToString(rowDataList, 2));
+
+            newVehicle.setVehicleName(handlePoiDataValueToString(rowDataList, 1));
+            newVehicle.setClassification(handlePoiDataValueToString(rowDataList, 2));
+            newVehicle.setMaxWeight(BigDecimal.valueOf(handlePoiDataValueToDouble(rowDataList, 3)));
+            newVehicle.setVolume(BigDecimal.valueOf(handlePoiDataValueToDouble(rowDataList, 4)));
+            newVehicle.setBuildCost(BigDecimal.valueOf(handlePoiDataValueToDouble(rowDataList, 5)));
+            newVehicle.setMaxSpeed(BigDecimal.valueOf(handlePoiDataValueToDouble(rowDataList, 6)));
+            newVehicle.setNumOfMembers(handlePoiDataValueToInteger(rowDataList, 7));
+            newVehicle.setMealPerMemberCost(handlePoiDataValueToInteger(rowDataList, 9));
+            newVehicle.setCrewSalaryPerHr(handlePoiDataValueToInteger(rowDataList, 10));
+            newVehicle.setMeasurements(handlePoiDataValueToString(rowDataList, 8));
+            newVehicle.setDescription(handlePoiDataValueToString(rowDataList, 11));
+            newVehicle.setInterestingFact(handlePoiDataValueToString(rowDataList, 12));
+            newVehicle.setNotes(handlePoiDataValueToString(rowDataList, 13));
+
+            // Append a new TransportationVehicle object to the PLANETS list using the values from file
+            TransportationVehicleData.addVehicle(newVehicle);
+        }
+    }
+
+    /**
+     * Returns the {@link PlanetaryBody} object with the provided name
+     * @param name the name of the {@link PlanetaryBody} object to return
+     * @return the {@link PlanetaryBody} object with the provided name
+     */
+    @Override
+    public DataAccessElement findName(String name) {
+        return null;
+    }
+
+    @Override
+    public List<String> getNameList() {
+        return List.of();
+    }
+}

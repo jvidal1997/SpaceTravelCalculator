@@ -1,0 +1,12 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/target/
+/target/*
+/src/test/
+/src/test/*
+/out/
+/out/*
+/logs/
+/logs/*
+

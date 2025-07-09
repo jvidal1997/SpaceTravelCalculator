@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="assignment">Programming Assignment 4</entry>
+    <entry key="name">Joel Romani Vidal</entry>
+    <entry key="student.id">94259622</entry>
+    <entry key="email">jvidal3@my.ccri.edu</entry>
+    <entry key="date">2024-10-12</entry>
+    <entry key="comments">I love Java property files! :-)</entry>    
+</properties>

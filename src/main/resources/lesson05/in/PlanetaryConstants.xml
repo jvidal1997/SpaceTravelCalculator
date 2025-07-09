@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- added id to the table just to show it in the code -->
+<constants id="1.0">
+	<constant>
+		<name>precise</name>
+		<hoursInDay>23.9344699</hoursInDay>
+		<daysInYear>365.24219</daysInYear>
+		<gravitationalConstant>6.67430</gravitationalConstant>
+		<massOfSun>1.98855</massOfSun>
+		<poundsToKilograms>0.45359237</poundsToKilograms>
+		<kilogramsToPounds>2.2046226218487757</kilogramsToPounds>
+		<milesToKilometers>1.609344</milesToKilometers>
+		<kilometersToMiles>0.62137119223733</kilometersToMiles>
+	</constant>
+	<constant>
+		<name>estimate</name>
+		<hoursInDay>24.00</hoursInDay>
+		<daysInYear>365.00</daysInYear>
+		<gravitationalConstant>6.67</gravitationalConstant>
+		<massOfSun>1.99</massOfSun>
+		<poundsToKilograms>0.4536</poundsToKilograms>
+		<kilogramsToPounds>2.2046</kilogramsToPounds>
+		<milesToKilometers>1.6093</milesToKilometers>
+		<kilometersToMiles>0.6214</kilometersToMiles>
+	</constant>
+</constants>

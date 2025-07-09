@@ -1,0 +1,14 @@
+/shelf/
+/workspace.xml
+target/
+target/*
+src/test/
+src/test/*
+out/
+out/*
+logs/
+logs/*
+out/artifacts/COMI_2510_Lessons_MavenProject_jar/COMI-2510-Lessons-MavenProject.jar
+target/SpaceTravelCalculator-v0.0.1-SNAPSHOT.jar
+out/exec/JRE/lib/modules
+SpaceTravelCalculator-1.0.exe
