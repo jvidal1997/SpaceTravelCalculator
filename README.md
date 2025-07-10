@@ -19,10 +19,16 @@ If you're working within the source code, I'm sure you already know that everyth
 ## UML Diagrams
 
 ### Utilities (left) & Abstract Overview (right)
+
 <img width="3300" height="2550" alt="STC-Diagram-p1" src="https://github.com/user-attachments/assets/c992ade1-1b30-43c8-b443-d8e222990d48" />
+
 ### Program Workflow
+
 <img width="3300" height="2550" alt="STC-Diagram-p2" src="https://github.com/user-attachments/assets/8e9f17f5-0ce5-44ae-b9d6-aa3325535872" />
+
 ### Data Objects
+
 <img width="3300" height="2550" alt="STC-Diagram-p3" src="https://github.com/user-attachments/assets/60f18414-fb91-4539-a834-7e5111a470d3" />
+
 ### Java Objects
 <img width="3300" height="2550" alt="STC-Diagram-p4" src="https://github.com/user-attachments/assets/bafaa395-66fe-4ca4-8722-861aa6df6840" />
