@@ -1,4 +1,7 @@
 # Space Travel Calculator
+
+
+
 This tool can be thought of as a commercial space-flight manager. It allows a user to choose two planetary bodies, a starting planet and a destination planet, as well as a vehicle for transport. It then runs the necessary calculations to determine various metrics for the trip. These include scientific calculations, such as gravity assist with a drag coefficient, and financial calculations, such as crew expenses, and much more. The results for each trip are then displayed in a table, offering the user an option to add another trip or export the results to a new Excel spreadsheet (XLSX).
 
 ## How it works
@@ -8,9 +11,9 @@ Upon initial launch of the program, you will be prompted to choose your properti
 
 ## Manipulating the data files
 As previously stated there are three data files:
-- Planet & Vehicle data
-- Constants (for calculations)
-- Contact information
+  - Planet & Vehicle data
+  - Constants (for calculations)
+  - Contact information
 
 Firstly, updating the contact XML file to contain your own contact information is highly encouraged, if you'd like your own information contained in the output file. Secondly, all of the headers in the provided ```Planets.xlsx``` file are required for the program to run. Though you're welcome to change values and add new fields. Lastly, the constants file works to the same way; values can be changed; but, they are required for the program to work properly.
 
