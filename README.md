@@ -1,6 +1,6 @@
 # Space Travel Calculator
 
-
+![STC - Made with Clipchamp](https://github.com/user-attachments/assets/15b1e03a-57a7-491f-bd4f-ec94dbfa9e68)
 
 This tool can be thought of as a commercial space-flight manager. It allows a user to choose two planetary bodies, a starting planet and a destination planet, as well as a vehicle for transport. It then runs the necessary calculations to determine various metrics for the trip. These include scientific calculations, such as gravity assist with a drag coefficient, and financial calculations, such as crew expenses, and much more. The results for each trip are then displayed in a table, offering the user an option to add another trip or export the results to a new Excel spreadsheet (XLSX).
 
